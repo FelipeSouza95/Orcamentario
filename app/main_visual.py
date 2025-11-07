@@ -224,10 +224,3 @@ if col_acao and col_emp:
 st.markdown("### 📋 Acompanhamento Orçamentário (Top 10) - Detalhado")
 tabela = df.head(10).astype(str)
 st.dataframe(tabela, use_container_width=True, height=None)
-
-# --------------------------------------------------------------
-# RODAPÉ
-# --------------------------------------------------------------
-ultima_modificacao = os.path.getmtime(CAMINHO_ARQUIVO)
-data_str = datetime.datetime.fromtimestamp(ultima_modificacao).strftime('%d/%m/%Y %H:%M')
-st.markdown(f"<div class='footer'>Atualizado em {data_str}</div>", unsafe_allow_html=True)
