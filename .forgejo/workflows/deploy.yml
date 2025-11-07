@@ -1,0 +1,31 @@
+name: 🚀 Deploy checklist_tce
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  🚢-deploy-prod:
+    name: '🚢 Deploy direto em produção'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Clonar repositório via IP real (com token)
+        run: |
+          git config --global user.name "forgejo-ci"
+          git config --global user.email "ci@forgejo.local"
+          git clone --depth=1 http://${{ secrets.FORGEJO_USER }}:${{ secrets.FORGEJO_TOKEN }}@10.42.88.217:31000/Felipe/checklist-tce repo
+
+      - name: 🛠️ Criar .env de produção
+        working-directory: repo
+        run: |
+          echo "ENV_ARQUIVO_CHECKLIST_TCE=${{ secrets.ENV_ARQUIVO_CHECKLIST_TCE }}" > .env
+
+      - name: 🛑 Parar container anterior (checklist_tce)
+        run: |
+          docker rm -f checklist_tce || true
+
+      - name: 🚀 Subir nova versão do container
+        working-directory: repo
+        run: |
+          docker compose -f docker-compose.yml --project-name checklist_tce up -d --build

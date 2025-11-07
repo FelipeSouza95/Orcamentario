@@ -1,0 +1,119 @@
+/* =========================================================
+   ESTILO — Painel Orçamentário (Executivo BR)
+   ========================================================= */
+
+/* Reset básico e layout geral */
+html, body, [class*="css"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+}
+
+.block-container {
+    padding-top: 0rem !important;
+}
+
+/* Oculta toolbar e menus do Streamlit */
+header, footer, [data-testid="stToolbar"], [data-testid="stDecoration"] {
+    display: none !important;
+}
+
+/* =========================================================
+   🔷 CABEÇALHO PRINCIPAL (SEM LOGO) — SES-RJ
+   ========================================================= */
+.header-topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 70px;
+    background: linear-gradient(90deg, #0E2F66 0%, #133E8C 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: 0.3px;
+    z-index: 9999;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 0 0 18px 18px; /* 🔹 borda inferior arredondada */
+}
+
+/* Título do cabeçalho */
+.header-title {
+    text-align: center;
+    width: 100%;
+}
+
+/* Garante espaço abaixo do header */
+body, .block-container {
+    padding-top: 90px !important;
+}
+
+/* =========================================================
+   🔹 CONTAINER DE CARDS
+   ========================================================= */
+.cards-container {
+    margin-top: 40px; /* espaçamento entre header e cards */
+}
+
+/* =========================================================
+   🟦 CARDS (fontes ampliadas e modernas)
+   ========================================================= */
+.metric-card {
+    background-color: rgb(0, 204, 255);
+    border-radius: 20px;
+    padding: 40px 60px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+    margin-bottom: 25px; /* espaçamento entre os cards */
+}
+
+.metric-card:hover {
+    transform: scale(1.03);
+}
+
+.metric-label-left {
+    color: #222;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.0;
+}
+
+.metric-value-right {
+    color: #003366;
+    font-size: 32px;
+    font-weight: 800;
+    text-align: right;
+    line-height: 1.0;
+}
+
+/* Card destaque EMPENHADO */
+.highlight {
+    background: linear-gradient(180deg, #00c48c, #00a676);
+    color: white;
+    box-shadow: 0px 8px 18px rgba(0, 184, 148, 0.6);
+}
+
+.highlight .metric-label-left,
+.highlight .metric-value-right {
+    color: white;
+}
+
+/* =========================================================
+   📅 FOOTER
+   ========================================================= */
+.footer {
+    text-align: center;
+    color: #999;
+    font-size: 16px;
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid #ddd;
+}
